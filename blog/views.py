@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def index(request):
+    """ View function for home page of site """
+
+    # Render the HTML temlate ,index.html
+    return render(request, 'index.html')
