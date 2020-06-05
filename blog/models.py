@@ -6,3 +6,12 @@ class Blog(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField(help_text='Enter the blog content')
     post_date = models.DateField(auto_now_add=True)
+
+
+class Comment(models.Model):
+    """ Comment model """
+    comment = models.TextField(help_text='Write your comment')
+    post_date = models.DateField(auto_now_add=False)
+
+
+# TODO: Add author fields to both models
