@@ -18,5 +18,9 @@ class Comment(models.Model):
     post_date = models.DateField(auto_now_add=False)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
 
+    class Meta:
+        # sort blog comments from oldest to latest
+        ordering = ['post_date']
+
 
 # TODO: Add author fields to both models
