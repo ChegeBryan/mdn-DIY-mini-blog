@@ -22,6 +22,10 @@ class Comment(models.Model):
     post_date = models.DateField(auto_now_add=False)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
 
+    def __str__(self):
+        # String for representing the Model object.
+        return self.comment
+
     class Meta:
         # sort blog comments from oldest to latest
         ordering = ['post_date']
