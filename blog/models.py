@@ -7,6 +7,10 @@ class Blog(models.Model):
     content = models.TextField(help_text='Enter the blog content')
     post_date = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        # String for representing the Model object.
+        return self.title
+
     class Meta:
         # sort blogs from latest to oldest
         ordering = ['-post_date']
