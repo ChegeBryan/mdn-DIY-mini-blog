@@ -23,6 +23,7 @@ class Comment(models.Model):
     comment = models.TextField(help_text='Write your comment')
     post_date = models.DateField(auto_now_add=False)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
 
     def __str__(self):
         # String for representing the Model object.
