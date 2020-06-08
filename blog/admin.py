@@ -5,7 +5,7 @@ from .models import Blog, Comment
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title', 'author', 'post_date')
 
 
 @admin.register(Comment)
