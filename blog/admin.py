@@ -10,4 +10,4 @@ class BlogAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('comment', 'author', 'post_date')
