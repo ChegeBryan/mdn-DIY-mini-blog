@@ -2,6 +2,16 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class Blogger(models.Model):
+    # Extend user model
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(help_text='Enter author bio', max_length=500)
+
+    def __str__(self):
+        # Return object representing blogger
+        return self.user.username
+
+
 class Blog(models.Model):
     """Model representing a blog """
     title = models.CharField(max_length=200)
