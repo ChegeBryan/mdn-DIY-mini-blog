@@ -125,3 +125,10 @@ Project developed as an assessment test understanding of how to create a website
  <li>The BlogListView (all-blog page) uses the expected template (e.g. the default)</li>
  <li>The BlogListView paginates records by 5 (at least on the first page)</li>
 </ul>
+
+## Testing app on Production
+
+- Visit the heroku [deployment](https://diyblogcb.herokuapp.com/).
+- For admin login and testing:
+  - Visit login admin at [Admin](https://diyblogcb.herokuapp.com/admin).
+  - Admin credentials (username: admin, password: 12345@qwerty)
