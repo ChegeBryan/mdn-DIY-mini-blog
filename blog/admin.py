@@ -14,9 +14,4 @@ class BlogAdmin(admin.ModelAdmin):
     inlines = [CommentInline, ]
 
 
-@admin.register(Comment)
-class CommentAdmin(admin.ModelAdmin):
-    list_display = ('comment', 'author', 'post_date')
-
-
 admin.site.register(Blogger)
