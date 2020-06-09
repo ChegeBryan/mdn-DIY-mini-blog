@@ -17,7 +17,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField(help_text='Enter the blog content')
     post_date = models.DateField(auto_now_add=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+    author = models.ForeignKey(Blogger, on_delete=models.CASCADE, blank=True)
 
     def __str__(self):
         # String for representing the Model object.
