@@ -27,6 +27,9 @@ class Comment(models.Model):
 
     def __str__(self):
         # String for representing the Model object.
+        # add elipsis if length of comment is longer than 75 characters
+        if len(self.comment) > 75:
+            return self.comment[:75] + '...'
         return self.comment
 
     class Meta:
