@@ -13,3 +13,4 @@ def index(request):
 
 class BlogListView(ListView):
     model = Blog
+    paginate_by = 5
