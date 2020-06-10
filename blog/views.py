@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+
+from .models import Blog
 
 
 def index(request):
@@ -6,3 +9,7 @@ def index(request):
 
     # Render the HTML temlate ,index.html
     return render(request, 'index.html')
+
+
+class BlogListView(ListView):
+    model = Blog
