@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class Blogger(models.Model):
@@ -22,6 +23,9 @@ class Blog(models.Model):
     def __str__(self):
         # String for representing the Model object.
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("blog_detail", args=[str(self.id)])
 
     class Meta:
         # sort blogs from latest to oldest
