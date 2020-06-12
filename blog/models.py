@@ -17,7 +17,7 @@ class Blog(models.Model):
     """Model representing a blog """
     title = models.CharField(max_length=200)
     content = models.TextField(help_text='Enter the blog content')
-    post_date = models.DateField(auto_now_add=True)
+    post_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(Blogger, on_delete=models.CASCADE, blank=True)
 
     def __str__(self):
@@ -35,7 +35,7 @@ class Blog(models.Model):
 class Comment(models.Model):
     """ Comment model """
     comment = models.TextField(help_text='Write your comment')
-    post_date = models.DateField(auto_now_add=False)
+    post_date = models.DateTimeField(auto_now_add=False)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
 
