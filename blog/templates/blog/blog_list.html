@@ -1,0 +1,24 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}<title>Mini Blog - Blogs</title>{% endblock %}
+
+{% block content %}
+<h5 class="pt-5 text-center">All blogs</h5>
+<h6 class="mb-2 text-muted text-center">Shows a list of all the blogs in the mini-blog website.</h6>
+<div class="card-columns py-3">
+  {% for blog in blog_list %}
+  <div class="card p-3 {% cycle 'bg-primary' 'bg-secondary' 'bg-success' 'bg-dark' 'bg-info'%}">
+    <blockquote class="blockquote mb-0 card-body">
+      <p><a href="{% url 'blog_detail' blog.pk %}" class="text-white">{{ blog.title }}</a></p>
+      <footer class="blockquote-footer">
+        <small class="text-white">
+          Posted by <a href="#" class="text-warning">{{ blog.author }}</a> on <cite title="Date posted">{{ blog.post_date }}</cite>
+        </small>
+      </footer>
+    </blockquote>
+  </div>
+  {% empty %}
+  <p class="card-text">No blogs yet made.</p>
+  {% endfor %}
+</div>
+{% endblock content %}
