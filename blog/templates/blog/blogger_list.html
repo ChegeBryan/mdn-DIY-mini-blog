@@ -1,0 +1,17 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}<title>Mini Blog - Blog Authors</title>{% endblock %}
+
+{% block content %}
+<h5 class="pt-5 text-center">All bloggers</h5>
+<h6 class="mb-2 text-muted text-center">Shows a list of all the blog authors.</h6>
+<ul>
+  {% for author in blogger_list %}
+  <li><a href="{% url 'blogger_detail' author.pk %}">{{ author|capfirst }}</a></li>
+  {% empty %}
+  <li>
+    <p class="text-danger">No bloggers found.</p>
+  </li>
+  {% endfor %}
+<ul>
+{% endblock content %}
