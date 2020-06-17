@@ -15,7 +15,7 @@
       <h6 class="card-header text-muted">Blogs by {{ blogger|capfirst }}</h6>
       <ul class="list-group list-group-flush">
         {% for blog in blogger.blog_set.all %}
-        <li class="list-group-item"><a href="{% url 'blog_detail' blog.pk %}">{{ blog|capfirst }}</a></li>
+        <li class="list-group-item"><a href="{% url 'blog_detail' blog.pk %}">{{ blog|capfirst }}</a> - {{ blog.post_date|default_if_none:'' }}</li>
         {% empty %}
         <li class="list-group-item">No blog found.</li>
         {% endfor %}
