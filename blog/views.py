@@ -22,3 +22,7 @@ class BlogDetailView(DetailView):
 
 class BloggerListView(ListView):
     model = Blogger
+
+
+class BloggerDetailView(DetailView):
+    model = Blogger
