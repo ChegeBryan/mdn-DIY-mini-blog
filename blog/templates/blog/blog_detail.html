@@ -5,15 +5,15 @@
   <h4 class="text-center">Blog</h4>
   <div class="media">
     <div class="media-body">
-      <h5 class="mt-0">{{ blog.title }}</h5>
-      <h6 class="text-muted">Posted by {{ blog.author }} posted on {{ blog.post_date }}</h6>
+      <h5 class="mt-0">{{ blog.title|capfirst }}</h5>
+      <h6 class="text-muted">Posted by {{ blog.author|capfirst }} posted on {{ blog.post_date }}</h6>
       <p>{{ blog.content }}</p>
 
       <h5 class="mt-3 ml-5">Comments</h5>
       {% for comment in blog.comment_set.all %}
       <div class="media mt-3">
         <div class="media-body ml-5">
-          <h6 class="text-info">Posted by {{ comment.author }} posted on {{ comment.post_date }}</h6>
+          <h6 class="text-info">Posted by {{ comment.author|capfirst }} posted on {{ comment.post_date }}</h6>
           <p class="">{{ comment.comment }}</p>
         </div>
       </div>
