@@ -3,7 +3,7 @@
 {% block title %}<title>Mini blog - {{ blogger }}</title>{% endblock title %}
 
 {% block content %}
-<div class="pt-5">
+<div class="py-5">
   <h4 class="text-center">Blogger Details</h4>
   <div class="d-flex justify-content-center pt-2">
     <div class="card" style="width: 28rem;">
@@ -12,6 +12,14 @@
         <h6 class="card-title text-muted">Blogger Bio</h6>
         <p class="card-text">{{ blogger.bio }}</p>
       </div>
+      <h6 class="card-header text-muted">Blogs by {{ blogger }}</h6>
+      <ul class="list-group list-group-flush">
+        {% for blog in blogger.blog_set.all %}
+        <li class="list-group-item"><a href="{% url 'blog_detail' blog.pk %}">{{ blog }}</a></li>
+        {% empty %}
+        <li class="list-group-item">No blog found.</li>
+        {% endfor %}
+      </ul>
     </div>
   </div>
 </div>
