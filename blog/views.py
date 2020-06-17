@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
-from .models import Blog
+from .models import Blog, Blogger
 
 
 def index(request):
@@ -15,5 +15,10 @@ class BlogListView(ListView):
     model = Blog
     paginate_by = 5
 
+
 class BlogDetailView(DetailView):
     model = Blog
+
+
+class BloggerListView(ListView):
+    model = Blogger
