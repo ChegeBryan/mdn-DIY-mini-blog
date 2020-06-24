@@ -139,3 +139,6 @@ LOGIN_REDIRECT_URL = '/'
 
 # Redirect to home URL after logout
 LOGOUT_REDIRECT_URL = '/'
+
+# logs any emails sent to the console (so you can copy the password reset link from the console).
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
