@@ -136,3 +136,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Redirect to home URL after login (Default redirects auth/profile/)
 LOGIN_REDIRECT_URL = '/'
+
+# Redirect to home URL after logout
+LOGOUT_REDIRECT_URL = '/'
