@@ -35,6 +35,9 @@
             {% endif %}
           </li>
         </ul>
+        {% if user.is_authenticated %}
+        <span class="navbar-text">{{ user.username }}</span>
+        {% endif %}
       </div>
     </nav>
     {% endblock navigation %}
