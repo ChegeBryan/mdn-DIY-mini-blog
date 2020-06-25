@@ -20,7 +20,13 @@
       {% empty %}
       <p class="ml-5 text-info">No comments made yet.</p>
       {% endfor %}
+
+      {% if user.is_authenticated %}
       <a class="btn btn-info ml-5" href="#">Add a comment</a>
+      {% else %}
+      <a class="btn btn-warning ml-5" href="{% url 'login' %}">Login to add comment</a>
+      {% endif %}
+
     </div>
   </div>
 </div>
