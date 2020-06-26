@@ -3,6 +3,7 @@ import datetime
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 
 from .models import Blog, Blogger, Comment
 
@@ -52,3 +53,8 @@ class CommentAdd(CreateView):
         form.instance.post_date = datetime.datetime.now()
         # Call super-class form validation behaviour
         return super().form_valid(form)
+
+    def get_success_url(self):
+        success_url = reverse_lazy('blog_detail', kwargs={
+                                   'pk': self.kwargs['pk']})
+        return success_url
