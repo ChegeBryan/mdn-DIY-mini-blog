@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView
 
@@ -32,3 +32,8 @@ class BloggerDetailView(DetailView):
 class CommentAdd(CreateView):
     model = Comment
     fields = ['comment']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["blog"] = get_object_or_404(Blog, pk=self.kwargs['pk'])
+        return context
