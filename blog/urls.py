@@ -10,4 +10,5 @@ urlpatterns = [
     path('bloggers/', views.BloggerListView.as_view(), name='bloggers'),
     path('bloggers/<int:pk>/',
          views.BloggerDetailView.as_view(), name='blogger_detail'),
+    path('blog/<int:pk>/create', views.CommentAdd.as_view(), name='add_comment'),
 ]
