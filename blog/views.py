@@ -1,7 +1,11 @@
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+import datetime
 
-from .models import Blog, Blogger
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
+
+from .models import Blog, Blogger, Comment
 
 
 def index(request):
@@ -26,3 +30,31 @@ class BloggerListView(ListView):
 
 class BloggerDetailView(DetailView):
     model = Blogger
+
+
+class CommentAdd(CreateView):
+    model = Comment
+    fields = ['comment']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["blog"] = get_object_or_404(Blog, pk=self.kwargs['pk'])
+        return context
+
+    def form_valid(self, form):
+        """
+        Add author and associated blog to form data before setting it as valid (so it is saved to model)
+        """
+        # Add logged-in user as author of comment
+        form.instance.author = self.request.user
+        # Associate comment with blog based on passed id
+        form.instance.blog = get_object_or_404(Blog, pk=self.kwargs['pk'])
+        # Add current time to form
+        form.instance.post_date = datetime.datetime.now()
+        # Call super-class form validation behaviour
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        success_url = reverse_lazy('blog_detail', kwargs={
+                                   'pk': self.kwargs['pk']})
+        return success_url
